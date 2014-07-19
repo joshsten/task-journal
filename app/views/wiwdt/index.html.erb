@@ -1,0 +1,89 @@
+<style>
+	.jumbotron.date-wrapper{
+		position: fixed;
+		right: 0px;
+		top: 0px;
+		padding-top: 24px;
+		padding-bottom: 24px; 
+	}
+	.accomplish-title{
+		font-size: 4em;
+		color: #888899;
+	}
+	.list{
+		list-style-type: square;
+	}
+	.list  li{
+		display: inline-block;
+		font-size: 2em;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+	.list li .accomplishment{
+		display:inline-block;
+		width: 70%;
+	}
+	.todo-list li {
+		font-size: 2em;
+		padding-top: 0.5em;
+		padding-bottom: 0.5em;
+	}
+	.todo-list span{
+		display: inline-block;
+		width:85%;
+	}
+	.todo-list .complete-accomplishment{
+		width: 14%;
+	}
+	.todo-list{
+		list-style-type: none;
+	}
+	.accomplish-list li .remove-accomplishment{
+		font-size: 0.5em;
+		float:right;
+	}
+	.todo-title{
+		font-size: 3em;
+		color: #998888;
+		margin-top: 1em;
+	}
+	.container .row:nth-of-type(1){
+		min-height: 200px;
+	}
+</style>
+
+<div class="date-wrapper jumbotron"><h1>Saturday, 7/19</h1></div>
+<div ng-app  class="container">
+<div ng-controller="doneController"  class="row">
+	<div class="col-lg-8 col-md-7 col-sm-6">
+		<h1 class="accomplish-title" >You Have Achievment</h1>
+
+		<ol class="accomplish-list list">
+			<li ng-repeat="item in items"  class="col-md-12">
+				<span ng-bind="item.text" class="accomplishment">Find the droids for Lord Vador.</span>
+				<button type="button" class="remove-accomplishment btn btn-danger" ng-click="cancelDoneHandler()">"Uhm...actually I didn't"</button>
+			</li>
+		</ol>
+	</div>
+</div>
+<div ng-controller="todoController"  class="row">
+        <div class="col-lg-8 col-md-7 col-sm-6">
+		<h2 class="todo-title">What would you like to do today?</h2>
+		<div>
+		<ol class="todo-list">
+			<li ng-repeat="item in items">
+				<span><pen ng-bind="item.text">Defeat Gannondorf using the power of metal</pen></span>
+				<button class="btn btn-default complete-accomplishment">I did it!</button>
+			</li>
+		</ol>
+	</div>
+</div>
+	</div>
+</div>
+<%= stylesheet_link_tag "bootstrap" %>
+<%= stylesheet_link_tag "pen" %>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<%= javascript_include_tag "pen" %>
+<%= javascript_include_tag "pen.helper" %>
+<%= javascript_include_tag "pen.options" %>
